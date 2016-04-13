@@ -1,1 +1,9 @@
-/* Empty. Add your own CSS if you like */
+.icon{
+    color:#aaa;!important;
+}
+.buttons{
+    width: 21%;
+}
+.button{
+    width: 100%;
+}
