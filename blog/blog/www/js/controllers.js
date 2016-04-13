@@ -43,13 +43,13 @@ angular.module('starter.controllers', [])
 
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 },
-    { title: 'what', id: 7 }
+    { title: 'Reggae', id: 1 ,pre:'nihaowoshipredeneirong hello world',img:'img/avatar.png'},
+    { title: 'Chill', id: 2 ,pre:'nihaowoshipredeneirong hello world',img:'img/avatar.png'},
+    { title: 'Dubstep', id: 3 ,pre:'nihaowoshipredeneirong hello world',img:'img/avatar.png'},
+    { title: 'Indie', id: 4 ,pre:'nihaowoshipredeneirong hello world',img:'img/avatar.png'},
+    { title: 'Rap', id: 5 ,pre:'nihaowoshipredeneirong hello world',img:'img/avatar.png'},
+    { title: 'Cowbell', id: 6 ,pre:'nihaowoshipredeneirong hello world',img:'img/avatar.png'},
+    { title: 'what', id: 7 ,pre:'nihaowoshipredeneirong hello world',img:'img/avatar.png'}
   ];
 })
 
