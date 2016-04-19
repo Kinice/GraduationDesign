@@ -1,10 +1,12 @@
 <ion-view view-title="Playlists">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="playlist in playlists"
+      <ion-item class="item-thumbnail-left"
+                ng-repeat="playlist in playlists"
                 show-delete="shouldShowDelete"
                 href="#/app/playlists/{{playlist.id}}">
           <img ng-src="{{playlist.img}}"/>
+          <h2>{{playlist.title}}</h2>
           <p>{{playlist.pre}}</p>
           <ion-option-button class="button-assertive">
               删除

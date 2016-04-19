@@ -43,15 +43,18 @@ angular.module('starter.controllers', [])
 
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [
-    { title: 'Reggae', id: 1 ,pre:'nihaowoshipredeneirong hello world',img:'img/avatar.png'},
-    { title: 'Chill', id: 2 ,pre:'nihaowoshipredeneirong hello world',img:'img/avatar.png'},
-    { title: 'Dubstep', id: 3 ,pre:'nihaowoshipredeneirong hello world',img:'img/avatar.png'},
-    { title: 'Indie', id: 4 ,pre:'nihaowoshipredeneirong hello world',img:'img/avatar.png'},
-    { title: 'Rap', id: 5 ,pre:'nihaowoshipredeneirong hello world',img:'img/avatar.png'},
-    { title: 'Cowbell', id: 6 ,pre:'nihaowoshipredeneirong hello world',img:'img/avatar.png'},
-    { title: 'what', id: 7 ,pre:'nihaowoshipredeneirong hello world',img:'img/avatar.png'}
+    { title: 'Reggae', id: 1 ,pre:'这里是简介这里是简介，这里是简介',img:'img/avatar.png',title:'This is title'},
+    { title: 'Chill', id: 2 ,pre:'这里是简介这里是简介，这里是简介',img:'img/avatar.png',title:'This is title'},
+    { title: 'Dubstep', id: 3 ,pre:'这里是简介这里是简介，这里是简介',img:'img/avatar.png',title:'This is title'},
+    { title: 'Indie', id: 4 ,pre:'这里是简介这里是简介，这里是简介',img:'img/avatar.png',title:'This is title'},
+    { title: 'Rap', id: 5 ,pre:'这里是简介这里是简介，这里是简介',img:'img/avatar.png',title:'This is title'},
+    { title: 'Cowbell', id: 6 ,pre:'这里是简介这里是简介，这里是简介',img:'img/avatar.png',title:'This is title'},
+    { title: 'what', id: 7 ,pre:'这里是简介这里是简介，这里是简介',img:'img/avatar.png',title:'This is title'}
   ];
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('PlaylistCtrl', function($scope, $stateParams, $ionicNavBarDelegate) {
+   $scope.goBack = function(){
+       $ionicNavBarDelegate.back();
+   }
 });

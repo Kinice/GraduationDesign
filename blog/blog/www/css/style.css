@@ -1,9 +1,12 @@
-.icon{
+.ftba .icon{
     color:#aaa;!important;
 }
-.buttons{
+.ftba .buttons{
     width: 21%;
 }
-.button{
+.ftba .button{
     width: 100%;
+}
+.lists1{
+    text-align: center;
 }
