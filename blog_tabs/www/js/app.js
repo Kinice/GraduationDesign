@@ -57,7 +57,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       views: {
           'tab-card': {
               templateUrl: 'templates/tab-card.html',
-              controller: 'ChatsCtrl'
+              controller: 'AllArticleCtrl'
           }
       }
       })
