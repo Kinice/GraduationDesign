@@ -1,14 +1,8 @@
 angular.module('starter.services', [])
-.factory('articles', function($http) {
-    var art = null;
-    $http.get('http://kinice.top/allArticles').success(function(data){
-        art = data;
-    });
-    return {
-        getArt: function(){
-            return art;
-        }
-    };
+.factory('httpFactory',function(){
+    var send = function(){
+
+    }
 })
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
