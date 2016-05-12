@@ -4,7 +4,6 @@ angular.module('starter.controllers', [])
         $http.get('http://kinice.top/allArticles').
             success(function(data){
                 $scope.data = data;
-                console.log(data);
             });
 })
 
@@ -27,8 +26,8 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('AllArticleCtrl', function($scope, articles){
-  $scope.posts = articles.getArt();
+.controller('AllArticleCtrl', function($scope){
+
 })
 .controller('AccountCtrl', function($scope) {
   $scope.settings = {
