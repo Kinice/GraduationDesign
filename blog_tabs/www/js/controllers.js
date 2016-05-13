@@ -2,20 +2,35 @@ angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope,$http) {
         $http.get('http://kinice.top/allArticles').
-            success(function(data){
-                $scope.data = data;
+        success(function(data){
+            $scope.data = data;
             });
+        $scope.doRefresh = function(){
+            $http.get('http://kinice.top/allArticles')
+                .success(function(newdata){
+                    $scope.data=newdata;
+                }).finally(function(){
+                    $scope.$broadcast('scroll.refreshComplete');
+                });
+        }
 })
+.controller('AppCtrl', function($scope,$ionicModal){
+    $ionicModal.fromTemplateUrl('templates/login.html', {
+        scope: $scope
+    }).then(function(modal){
+        $scope.modal = modal;
+    });
+    $scope.closeLogin = function(){
+        $scope.modal.hide();
+    };
+    $scope.login = function(){
+        $scope.modal.show();
+    };
+    $scope.doLogin = function(){
 
+    }
+})
 .controller('ChatsCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-
   $scope.chats = Chats.all();
   $scope.remove = function(chat) {
     Chats.remove(chat);
