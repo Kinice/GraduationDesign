@@ -45,7 +45,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       views: {
           'tab-card': {
               templateUrl: 'templates/tab-card.html',
-              controller: 'AllArticleCtrl'
+              controller: 'SearchCtrl'
           }
       }
       })

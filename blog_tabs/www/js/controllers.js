@@ -1,15 +1,27 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope,$http) {
-        $http.get('http://kinice.top/allArticles').
-        success(function(data){
-            $scope.data = data;
-            });
+.controller('DashCtrl', function($scope,$http,$timeout,$ionicLoading) {
+        $ionicLoading.show({
+            content: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: false,
+            maxWidth: 200,
+            showDelay: 0
+        });
+        $timeout(function(){
+            $http.get('http://kinice.top/allArticles').
+                success(function(data){
+                    $scope.data = data;
+                    $ionicLoading.hide();
+                });
+        },1000);
+
         $scope.doRefresh = function(){
             $http.get('http://kinice.top/allArticles')
                 .success(function(newdata){
                     $scope.data=newdata;
-                }).finally(function(){
+                })
+                .finally(function(){
                     $scope.$broadcast('scroll.refreshComplete');
                 });
         }
@@ -20,12 +32,15 @@ angular.module('starter.controllers', [])
     }).then(function(modal){
         $scope.modal = modal;
     });
+
     $scope.closeLogin = function(){
         $scope.modal.hide();
     };
+
     $scope.login = function(){
         $scope.modal.show();
     };
+
     $scope.doLogin = function(){
 
     }
@@ -41,7 +56,7 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('AllArticleCtrl', function($scope){
+.controller('SearchCtrl', function($scope){
 
 })
 .controller('AccountCtrl', function($scope) {

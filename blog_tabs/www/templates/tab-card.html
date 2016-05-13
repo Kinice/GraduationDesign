@@ -1,30 +1,16 @@
 <ion-view view-title="Cards">
-    <ion-content>
+    <div class="bar bar-subheader item-input-inset">
+        <label class="item-input-wrapper">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="search" placeholder="搜索">
+        </label>
+        <button class="button button-small">
+            搜索
+        </button>
+    </div>
+    <ion-content style="margin-top: 30px;">
         <ion-list>
-            <div class="list card">
-                <div class="item item-avatar">
-                    <img src="img/qiyu.jpg">
-                    <h2>Marty McFly</h2>
-                    <p ng-bind="posts"></p>
-                </div>
-                <div class="item item-image" style="text-align: center">
-                    <a href="#"><img src="img/ben.png"/></a>
-                </div>
-                <div class="item tabs tabs-secondary tabs-icon-left">
-                    <a class="tab-item" href="#">
-                        <i class="icon ion-thumbsup"></i>
-                        Like
-                    </a>
-                    <a class="tab-item" href="#">
-                        <i class="icon ion-chatbox"></i>
-                        Comment
-                    </a>
-                    <a class="tab-item" href="#">
-                        <i class="icon ion-share"></i>
-                        Share
-                    </a>
-                </div>
-            </div>
+
         </ion-list>
     </ion-content>
 </ion-view>
