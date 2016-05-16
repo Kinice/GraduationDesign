@@ -1,18 +1,18 @@
 angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope,$http,$timeout,$ionicLoading) {
-        $ionicLoading.show({
-            content: 'Loading',
-            animation: 'fade-in',
-            showBackdrop: false,
-            maxWidth: 200,
-            showDelay: 0
-        });
+         $ionicLoading.show({
+             content: 'Loading',
+             animation: 'fade-in',
+             showBackdrop: false,
+             maxWidth: 200,
+             showDelay: 0
+         });
         $timeout(function(){
-            $http.get('http://kinice.top/allArticles').
-                success(function(data){
+            $http.get('http://kinice.top/allArticles')
+                .success(function(data){
                     $scope.data = data;
-                    $ionicLoading.hide();
+                     $ionicLoading.hide();
                 });
         },1000);
 
@@ -57,7 +57,13 @@ angular.module('starter.controllers', [])
 })
 
 .controller('SearchCtrl', function($scope){
-
+  $scope.search = function($event){
+    if($event.keyCode!=13){
+      return false;
+    }else{
+      alert('search!');
+    }
+  }
 })
 .controller('AccountCtrl', function($scope) {
   $scope.settings = {

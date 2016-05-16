@@ -1,12 +1,9 @@
-<ion-view view-title="Cards">
+<ion-view view-title="搜索">
     <div class="bar bar-subheader item-input-inset">
         <label class="item-input-wrapper">
             <i class="icon ion-ios-search placeholder-icon"></i>
-            <input type="search" placeholder="搜索">
+            <input type="search" placeholder="搜索" ng-keyup="search($event)">
         </label>
-        <button class="button button-small">
-            搜索
-        </button>
     </div>
     <ion-content style="margin-top: 30px;">
         <ion-list>
