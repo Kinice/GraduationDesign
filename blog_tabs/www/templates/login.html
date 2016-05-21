@@ -10,8 +10,9 @@
             <div class="list">
                 <label class="item item-input">
                     <span class="input-label">用户名</span>
-                    <input placeholder="Username" type="text" ng-model="loginData.username">
+                    <input placeholder="Username" type="text" ng-model="loginData.name">
                 </label>
+                <input type="hidden" id="values" value="{{loginData}}">
                 <label class="item item-input">
                     <span class="input-label">密码</span>
                     <input placeholder="Password" type="password" ng-model="loginData.password">

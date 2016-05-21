@@ -1,0 +1,33 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <h1 class="title">发布</h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closePost()">关闭</button>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <form ng-submit="doLogin()">
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">标题</span>
+                    <input placeholder="请输入标题" type="text" ng-model="postData.username">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">标签</span>
+                    <input placeholder="用英文逗号','分开" type="text" ng-model="postData.username">
+                </label>
+                <label class="item item-input item-select">
+                    <span class="input-label">分类</span>
+                    <select name="tag">
+                      <option value="about-code">技术</option>
+                      <option value="brain-hole">生活</option>
+                      <option value="niu-b">兴趣</option>
+                    </select>
+                </label>
+                <label class="item">
+                    <button class="button button-block button-positive" type="submit">发布！</button>
+                </label>
+            </div>
+        </form>
+    </ion-content>
+</ion-modal-view>

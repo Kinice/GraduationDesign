@@ -26,3 +26,6 @@
 .art-content h1{
   font-size: 24px;
 }
+.item-select select{
+  right:auto;!important;
+}

@@ -1,14 +1,20 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform,ls) {
   $ionicPlatform.ready(function() {
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
-
     }
     if (window.StatusBar) {
       StatusBar.styleDefault();
+    }
+    if(ls.get('username')){
+      ls.set('logStatus','1');
+      console.log(ls.get('logStatus'));
+    }else{
+      ls.set('logStatus','0');
+      console.log(ls.get('logStatus'));
     }
   });
 })
@@ -56,6 +62,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         'tab-chats': {
           templateUrl: 'templates/tab-chats.html',
           controller: 'ChatsCtrl'
+        }
+      }
+    })
+    .state('tab.search-detial',{
+      url: '/search/:id',
+      views: {
+        'tab-card':{
+          templateUrl: 'templates/chat-detail.html',
+          controller: 'ChatDetailCtrl'
+        }
+      }
+    })
+    .state('tab.dash-detial',{
+      url: '/dashs/:id',
+      views: {
+        'tab-dash':{
+          templateUrl: 'templates/chat-detail.html',
+          controller: 'ChatDetailCtrl'
         }
       }
     })
