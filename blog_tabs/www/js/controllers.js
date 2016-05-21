@@ -8,16 +8,14 @@ angular.module('starter.controllers', [])
              maxWidth: 200,
              showDelay: 0
          });
-        $timeout(function(){
-            $http.get('http://kinice.top/allArticles')
-                .success(function(data){
-                    $scope.data = data;
-                     $ionicLoading.hide();
-                });
-        },1000);
+        $http.get('http://kinice.top/api/allArticles')
+            .success(function(data){
+                $scope.data = data;
+                $ionicLoading.hide();
+            });
 
         $scope.doRefresh = function(){
-            $http.get('http://kinice.top/allArticles')
+            $http.get('http://kinice.top/api/allArticles')
                 .success(function(newdata){
                     $scope.data=newdata;
                 })
@@ -45,15 +43,38 @@ angular.module('starter.controllers', [])
 
     }
 })
-.controller('ChatsCtrl', function($scope, Chats) {
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
+.controller('ChatsCtrl', function($scope, $http,$timeout,$ionicLoading) {
+  $ionicLoading.show({
+      content: 'Loading',
+      animation: 'fade-in',
+      showBackdrop: false,
+      maxWidth: 200,
+      showDelay: 0
+  });
+ $http.get('http://kinice.top/api/allArticles')
+     .success(function(data){
+         $scope.data = data;
+         $ionicLoading.hide();
+     });
+ $scope.doRefresh = function(){
+     $http.get('http://kinice.top/api/allArticles')
+         .success(function(newdata){
+             $scope.data=newdata;
+         })
+         .finally(function(){
+             $scope.$broadcast('scroll.refreshComplete');
+         });
+ }
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
+.controller('ChatDetailCtrl', function($scope, $http, $stateParams, $ionicLoading) {
+  var get = function(id) {
+    $http.get('http://kinice.top/api/article/'+id)
+    .success(function(data) {
+      $scope.post = data;
+    });
+  }
+  get($stateParams.id);
 })
 
 .controller('SearchCtrl', function($scope){

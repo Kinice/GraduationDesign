@@ -1,1 +1,28 @@
 /* Empty. Add your own CSS if you like */
+.nomal-list .item-content{
+  padding-right: 16px;!important;
+  padding-left: 16px;!important;
+}
+.nomal-list .item-content > img:first-child{
+  left: auto;!important;
+  right: 16px;!important;
+}
+.nomal-list .item-content h2{
+  white-space: normal;
+  padding-right: 60px;
+  min-height: 40px;
+}
+.nomal-list .nomal-list-bottom{
+  margin-top: 14px;
+  font-size: 14px;
+}
+.nomal-list .nomal-list-bottom .nomal-list-bottom-left{
+  color: #aaa;
+  float: left;
+}
+.nomal-list .nomal-list-bottom .nomal-list-bottom-right{
+  float: right;
+}
+.art-content h1{
+  font-size: 24px;
+}

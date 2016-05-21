@@ -14,7 +14,7 @@ angular.module('starter.services', [])
     face: 'img/ben.png'
   }, {
     id: 1,
-    name: 'Max Lynx',
+    name: 'MaxLynxsasdasdasdasdasdasdasdasasdasd',
     lastText: 'Hey, it\'s me',
     face: 'img/max.png'
   }, {
