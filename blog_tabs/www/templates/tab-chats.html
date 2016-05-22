@@ -1,5 +1,18 @@
 <ion-view view-title="订阅内容">
-  <ion-content>
+  <div class="bar bar-subheader">
+      <ion-tabs class="tabs">
+        <ion-tab title="技术">
+          <ion-nav-view name="tab-dash"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="技术">
+          <ion-nav-view name="tab-dash"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="技术">
+          <ion-nav-view name="tab-dash"></ion-nav-view>
+        </ion-tab>
+      </ion-tabs>
+  </div>
+  <ion-content class="has-subheader">
     <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
     <ion-list>
       <ion-item class="item-remove-animate item-avatar nomal-list" ng-repeat="post in data" type="item-text-wrap" href="#/tab/chat/{{post._id}}">

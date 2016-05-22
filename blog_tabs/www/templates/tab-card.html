@@ -5,7 +5,7 @@
             <input type="search" placeholder="搜索" ng-keyup="search($event)" id="searchinput">
         </label>
     </div>
-    <ion-content style="margin-top: 30px;">
+    <ion-content class="has-subheader">
         <p style="margin-top:30px;text-align:center;color:#aaa;" ng-if="data.length == 0">不是我瞎说，真没搜到东西。要不再试试？</p>
         <ion-list ng-if="data.length != 0">
           <ion-item class="item-remove-animate item-avatar nomal-list" ng-repeat="post in data" type="item-text-wrap" href="#/tab/search/{{post._id}}">
