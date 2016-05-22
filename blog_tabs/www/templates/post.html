@@ -6,24 +6,31 @@
         </div>
     </ion-header-bar>
     <ion-content>
-        <form ng-submit="doLogin()">
+        <form ng-submit="doPost()">
             <div class="list">
                 <label class="item item-input">
                     <span class="input-label">标题</span>
-                    <input placeholder="请输入标题" type="text" ng-model="postData.username">
+                    <input placeholder="请输入标题" type="text" ng-model="postData.title">
                 </label>
                 <label class="item item-input">
                     <span class="input-label">标签</span>
-                    <input placeholder="用英文逗号','分开" type="text" ng-model="postData.username">
+                    <input placeholder="用英文逗号','分开" type="text" ng-model="postData.describe">
                 </label>
                 <label class="item item-input item-select">
                     <span class="input-label">分类</span>
-                    <select name="tag">
+                    <select name="tag" ng-model="postData.tag">
                       <option value="about-code">技术</option>
                       <option value="brain-hole">生活</option>
                       <option value="niu-b">兴趣</option>
                     </select>
                 </label>
+                <label class="item item-input">
+                  <span class="input-label">内容</span>
+                </label>
+                <label class="item item-input">
+                  <textarea placeholder="支持Markdown语法" rows="16" ng-model="postData.post"></textarea>
+                </label>
+                <input type="hidden" id="postValue" value="{{postData}}">
                 <label class="item">
                     <button class="button button-block button-positive" type="submit">发布！</button>
                 </label>

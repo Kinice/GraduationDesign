@@ -37,12 +37,78 @@ angular.module('starter.controllers', [])
         $scope.modalLogin = modal;
     });
 
+    $ionicModal.fromTemplateUrl('templates/reg.html', {
+        scope: $scope
+    }).then(function(modal){
+        $scope.modalReg = modal;
+    });
+    //reg open
+    $scope.reg = function(){
+      $scope.modalLogin.hide();
+      $scope.modalReg.show();
+    }
+    $scope.closeReg = function(){
+      $scope.modalReg.hide();
+    }
+    $scope.doReg = function(){
+      var values = JSON.parse(document.getElementById('regValues').value);
+      $ionicLoading.show({
+          content: 'Loading',
+          animation: 'fade-in',
+          showBackdrop: false,
+          maxWidth: 200,
+          showDelay: 0
+      });
+       $.post('http://kinice.top/api/reg',values,function(data){
+         $ionicLoading.hide();
+         if(data == 'error1'){
+           var myPopup = $ionicPopup.show({
+             title: '用户名已存在',
+             scope: $scope,
+           });
+           $timeout(function() {
+             myPopup.close();
+             $scope.modalLogin.hide();
+           }, 2000);
+         }else if(data == 'error2'){
+           var myPopup = $ionicPopup.show({
+             title: '数据库读取出错',
+             scope: $scope,
+           });
+           $timeout(function() {
+             myPopup.close();
+             $scope.modalLogin.hide();
+           }, 2000);
+         }else if(data == 'success'){
+           var myPopup = $ionicPopup.show({
+             title: '注册成功',
+             scope: $scope,
+           });
+           $timeout(function() {
+             myPopup.close();
+             $scope.modalLogin.hide();
+           }, 2000);
+          $scope.modalReg.hide();
+          ls.set('logStatus','1');
+          ls.set('username',values.name);
+          ls.set('email',values.email);
+         }
+       });
+    }
+    //post and login open
     $scope.open = function(){
       var bool = ls.get('logStatus');
       if(bool=='1'){
         $scope.modalPost.show();
       }else if(bool=='0'){
         $scope.modalLogin.show();
+        var myPopup = $ionicPopup.show({
+          title: '请先登录',
+          scope: $scope,
+        });
+        $timeout(function() {
+          myPopup.close();
+        }, 2000);
       }
     }
 
@@ -51,9 +117,38 @@ angular.module('starter.controllers', [])
     };
 
     $scope.doPost = function(){
-
+        var values = JSON.parse(document.getElementById('postValue').value);
+        values.name = ls.get('username');
+        $ionicLoading.show({
+            content: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: false,
+            maxWidth: 200,
+            showDelay: 0
+        });
+        $.post('http://kinice.top/api/post',values,function(data){
+           $ionicLoading.hide();
+           if(data == 'success'){
+             var myPopup = $ionicPopup.show({
+               title: '发布成功',
+               scope: $scope,
+             });
+             $timeout(function() {
+               myPopup.close();
+               $scope.modalPost.hide()
+             }, 2000);
+           }else{
+             var myPopup = $ionicPopup.show({
+               title: '发布失败',
+               scope: $scope,
+             });
+             $timeout(function() {
+               myPopup.close();
+             }, 2000);
+           }
+        });
     };
-
+    //login
     $scope.closeLogin = function(){
         $scope.modalLogin.hide();
     };
@@ -165,9 +260,6 @@ angular.module('starter.controllers', [])
   }
 })
 .controller('AccountCtrl', function($scope,ls,$ionicPopup,$timeout) {
-  $scope.settings = {
-    enableFriends: true
-  };
   $scope.logout = function(){
     localStorage.clear();
     ls.set('logStatus','0');
