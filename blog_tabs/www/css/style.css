@@ -29,3 +29,23 @@
 .item-select select{
   right:auto;!important;
 }
+.account-detail{
+  text-align: center;
+}
+.account-detail img{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 1px solid #666;
+}
+.account-detail h2{
+  margin-top: 10px;
+}
+.see-comment{
+  text-align: center;
+  display: block;
+  width: 100%;
+  line-height: 30px;
+  border-radius: 3px;
+  background: #ddd;
+}

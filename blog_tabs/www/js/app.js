@@ -11,10 +11,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
     if(ls.get('username')){
       ls.set('logStatus','1');
-      console.log(ls.get('logStatus'));
     }else{
       ls.set('logStatus','0');
-      console.log(ls.get('logStatus'));
     }
   });
 })
@@ -74,6 +72,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
+    .state('tab.chat-comment',{
+      url: '/chat/comment/:id',
+      views: {
+        'tab-chats':{
+          templateUrl: 'templates/comments.html',
+          controller: 'CommentsCtrl'
+        }
+      }
+    })
     .state('tab.dash-detial',{
       url: '/dashs/:id',
       views: {
@@ -92,7 +99,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
-
+    .state('tab.chat-tag',{
+      url: '/chats/:tag',
+      views:{
+        'tab-chats':{
+          templateUrl:'templates/tag.html',
+          controller:'TagCtrl'
+        }
+      }
+    })
+    .state('tab.my',{
+      url: '/account/my',
+      views:{
+        'tab-account':{
+          templateUrl:'templates/my.html',
+          controller:'MyCtrl'
+        }
+      }
+    })
   .state('tab.account', {
     url: '/account',
     views: {

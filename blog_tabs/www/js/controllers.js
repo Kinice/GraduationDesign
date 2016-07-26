@@ -173,6 +173,7 @@ angular.module('starter.controllers', [])
           $timeout(function() {
             myPopup.close();
             $scope.modalLogin.hide();
+            location.reload(true);
           }, 2000);
           //store login Status
           ls.set('logStatus','1');
@@ -222,17 +223,98 @@ angular.module('starter.controllers', [])
          });
  }
 })
-
+.controller('TagCtrl', function($scope,$http,$stateParams,$ionicLoading){
+  var get = function(tag){
+    $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: false,
+        maxWidth: 200,
+        showDelay: 0
+    });
+    $http.get('http://kinice.top/api/articleList/'+tag)
+    .success(function(data){
+      $scope.data = data;
+      $ionicLoading.hide();
+    });
+  }
+  get($stateParams.tag);
+})
 .controller('ChatDetailCtrl', function($scope, $http, $stateParams, $ionicLoading) {
   var get = function(id) {
+    $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: false,
+        maxWidth: 200,
+        showDelay: 0
+    });
     $http.get('http://kinice.top/api/article/'+id)
     .success(function(data) {
       $scope.post = data;
+      $ionicLoading.hide();
     });
   }
   get($stateParams.id);
 })
-
+.controller('CommentsCtrl', function($scope, $ionicPopup, $http, $timeout, $stateParams, $ionicLoading, ls){
+    var get = function(id) {
+      $ionicLoading.show({
+          content: 'Loading',
+          animation: 'fade-in',
+          showBackdrop: false,
+          maxWidth: 200,
+          showDelay: 0
+      });
+    $http.get('http://kinice.top/api/article/'+id)
+    .success(function(data) {
+      $scope.post = data;
+      $ionicLoading.hide();
+    });
+  }
+  $scope.comment = function($event){
+    if($event.keyCode != 13){
+      return false;
+    }else{
+      var comment = document.getElementById('commentinput').value;
+      $ionicLoading.show({
+          content: 'Loading',
+          animation: 'fade-in',
+          showBackdrop: false,
+          maxWidth: 200,
+          showDelay: 0
+      });
+      if(comment){
+        $.post('http://kinice.top/api/article/'+$stateParams.id,{
+          'uname':ls.get('username'),
+          'email':ls.get('email')||'szp93@126.com',
+          'content':comment
+        },function(data){
+          console.log(data);
+          $ionicLoading.hide();
+          if(data == 'success'){
+            var myPopup = $ionicPopup.show({
+              title: '评论成功',
+              scope: $scope,
+            });
+            $timeout(function() {
+              myPopup.close();
+            }, 2000);
+          }else{
+            var myPopup = $ionicPopup.show({
+              title: '评论失败',
+              scope: $scope,
+            });
+            $timeout(function() {
+              myPopup.close();
+            }, 2000);
+          }
+        });
+      }
+    }
+  }
+  get($stateParams.id);
+})
 .controller('SearchCtrl', function($scope,$ionicLoading){
   $scope.search = function($event){
     if($event.keyCode!=13){
@@ -259,7 +341,26 @@ angular.module('starter.controllers', [])
     }
   }
 })
+.controller('MyCtrl', function($scope,$http,$stateParams,$ionicLoading,ls){
+  var get = function(name){
+    $ionicLoading.show({
+        content: 'Loading',
+        animation: 'fade-in',
+        showBackdrop: false,
+        maxWidth: 200,
+        showDelay: 0
+    });
+    $http.get('http://kinice.top/api/getArticlesByName/'+name)
+    .success(function(data){
+      $scope.data = data;
+      $ionicLoading.hide();
+    });
+  }
+  get(ls.get('username'));
+})
+
 .controller('AccountCtrl', function($scope,ls,$ionicPopup,$timeout) {
+  $scope.logStatus = ls.get('logStatus') == '1'?true:false;
   $scope.logout = function(){
     localStorage.clear();
     ls.set('logStatus','0');
@@ -269,6 +370,8 @@ angular.module('starter.controllers', [])
     });
     $timeout(function() {
       myPopup.close();
+      location.reload(true);
     }, 2000);
+
   }
 });

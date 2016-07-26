@@ -5,6 +5,11 @@
             <input type="search" placeholder="搜索" ng-keyup="search($event)" id="searchinput">
         </label>
     </div>
+    <!-- <div class="list card has-subheader">
+      <a href="#" class="item item-button-right">ionic<button type="button"class="button button-positive" name="button">+ 订阅</button></a>
+      <a href="#" class="item item-button-right">ionic<button type="button"class="button button-positive" name="button">+ 订阅</button></a>
+      <a href="#" class="item item-button-right">ionic<button type="button"class="button button-positive" name="button">+ 订阅</button></a>
+    </div> -->
     <ion-content class="has-subheader">
         <p style="margin-top:30px;text-align:center;color:#aaa;" ng-if="data.length == 0">不是我瞎说，真没搜到东西。要不再试试？</p>
         <ion-list ng-if="data.length != 0">
