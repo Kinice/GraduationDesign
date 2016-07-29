@@ -315,7 +315,7 @@ angular.module('starter.controllers', [])
   }
   get($stateParams.id);
 })
-.controller('SearchCtrl', function($scope,$ionicLoading){
+.controller('SearchCtrl', function($scope,$ionicLoading,$cordovaVibration){
   $scope.search = function($event){
     if($event.keyCode!=13){
       return false;
@@ -333,6 +333,7 @@ angular.module('starter.controllers', [])
           'keyword' : searchKey
         },function(data){
           $scope.data = data;
+          $cordovaVibration.vibrate(1000);
           $ionicLoading.hide();
         });
       }else{
@@ -359,7 +360,7 @@ angular.module('starter.controllers', [])
   get(ls.get('username'));
 })
 
-.controller('AccountCtrl', function($scope,ls,$ionicPopup,$timeout) {
+.controller('AccountCtrl', function($scope,ls,$ionicPopup,$timeout){
   $scope.logStatus = ls.get('logStatus') == '1'?true:false;
   $scope.logout = function(){
     localStorage.clear();
@@ -374,4 +375,30 @@ angular.module('starter.controllers', [])
     }, 2000);
 
   }
+})
+
+.controller('PicCtrl', function($scope, $cordovaCamera){
+  document.addEventListener("deviceready", function () {
+
+    var options = {
+      quality: 100,
+      destinationType: Camera.DestinationType.DATA_URL,
+      sourceType: Camera.PictureSourceType.CAMERA,
+      allowEdit: true,
+      encodingType: Camera.EncodingType.JPEG,
+      targetWidth: 100,
+      targetHeight: 100,
+      popoverOptions: CameraPopoverOptions,
+      saveToPhotoAlbum: false,
+      correctOrientation:true
+    };
+
+    $cordovaCamera.getPicture(options).then(function(imageData) {
+      var image = document.getElementById('myImage');
+      image.src = "data:image/jpeg;base64," + imageData;
+    }, function(err) {
+      alert(err);
+    });
+
+  }, false);
 });

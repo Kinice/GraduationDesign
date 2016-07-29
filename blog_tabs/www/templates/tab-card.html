@@ -12,6 +12,7 @@
     </div> -->
     <ion-content class="has-subheader">
         <p style="margin-top:30px;text-align:center;color:#aaa;" ng-if="data.length == 0">不是我瞎说，真没搜到东西。要不再试试？</p>
+        <p ng-bind="device"></p>
         <ion-list ng-if="data.length != 0">
           <ion-item class="item-remove-animate item-avatar nomal-list" ng-repeat="post in data" type="item-text-wrap" href="#/tab/search/{{post._id}}">
             <img ng-src="http://gravatar.duoshuo.com/avatar/cf664a903aad472c71afb8661fd15448">
