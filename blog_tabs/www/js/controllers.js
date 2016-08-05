@@ -315,7 +315,7 @@ angular.module('starter.controllers', [])
   }
   get($stateParams.id);
 })
-.controller('SearchCtrl', function($scope,$ionicLoading,$cordovaVibration){
+.controller('SearchCtrl', function($scope,$ionicLoading){
   $scope.search = function($event){
     if($event.keyCode!=13){
       return false;
@@ -333,7 +333,6 @@ angular.module('starter.controllers', [])
           'keyword' : searchKey
         },function(data){
           $scope.data = data;
-          $cordovaVibration.vibrate(1000);
           $ionicLoading.hide();
         });
       }else{
@@ -378,6 +377,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PicCtrl', function($scope, $cordovaCamera){
+
   document.addEventListener("deviceready", function () {
 
     var options = {
