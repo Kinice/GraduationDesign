@@ -58,7 +58,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter
       url: '/chats',
       views: {
         'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
+          templateUrl: 'templates/chat.html',
           controller: 'ChatsCtrl'
         }
       }
