@@ -1,0 +1,24 @@
+<ion-view view-title="Account">
+  <ion-content>
+    <ion-list>
+      <ion-item class="account-detail">
+        <img src="img/qiyu.jpg" />
+        <h2>Kinice</h2>
+      </ion-item>
+      <ion-item href="#/tab/account/my">
+        我的文章
+      </ion-item>
+      <ion-item href="#">
+        我收藏的文章
+      </ion-item>
+      <ion-item href="#">
+        关于
+      </ion-item>
+      <ion-item  ng-if="logStatus">
+        <button class="button button-assertive button-full" ng-click="logout()">
+          退出登录
+        </button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

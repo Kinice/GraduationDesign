@@ -1,0 +1,21 @@
+<ion-view view-title="订阅内容">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar nomal-list" ng-repeat="post in data" type="item-text-wrap" href="#/tab/chat/{{post._id}}">
+        <img ng-src="http://gravatar.duoshuo.com/avatar/cf664a903aad472c71afb8661fd15448">
+        <h2>{{post.title}}</h2>
+        <div class="nomal-list-bottom">
+          <div class="nomal-list-bottom-left">
+            <i class="ion-ios-heart-outline"></i>
+            <span>0&nbsp;&nbsp;&nbsp;</span>
+            <i class="ion-ios-chatbubble-outline"></i>
+            <span>{{post.comments.length}}</span>
+          </div>
+          <div class="nomal-list-bottom-right">
+            {{post.name}}
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

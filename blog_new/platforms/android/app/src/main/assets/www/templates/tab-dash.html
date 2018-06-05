@@ -1,0 +1,29 @@
+<ion-view view-title="好文精选">
+  <ion-content class="padding">
+      <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+      <div class="list card" ng-repeat="post in data">
+          <div class="item item-avatar">
+              <img src="img/qiyu.jpg">
+              <h2>{{post.title}}</h2>
+              <p><a href="#/tab/dashs/{{post._id}}"></a>{{post.name}}</p>
+          </div>
+          <div class="item item-image" style="text-align: center">
+              <a href="#/tab/dashs/{{post._id}}"><img src="img/ben.png"/></a>
+          </div>
+          <div class="item tabs tabs-secondary tabs-icon-left">
+              <a class="tab-item" href="#">
+                  <i class="icon ion-thumbsup"></i>
+                  Like
+              </a>
+              <a class="tab-item" href="#">
+                  <i class="icon ion-chatbox"></i>
+                  Comment
+              </a>
+              <a class="tab-item" href="#">
+                  <i class="icon ion-share"></i>
+                  Share
+              </a>
+          </div>
+      </div>
+  </ion-content>
+</ion-view>

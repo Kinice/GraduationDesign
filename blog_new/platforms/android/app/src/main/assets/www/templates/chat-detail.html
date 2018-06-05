@@ -1,0 +1,16 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{post.title}}">
+  <ion-content class="padding art-content">
+      <div class="k-article" ng-bind-html="post.post">
+
+      </div>
+      <a class="see-comment item-content" href="#/tab/chat/comment/{{post._id}}">
+        查看评论
+      </a>
+  </ion-content>
+</ion-view>

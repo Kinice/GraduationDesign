@@ -1,0 +1,27 @@
+<ion-view view-title="订阅内容">
+  <ion-content>
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+    <div class="list card">
+      <a class="item item-thumbnail-left" style="min-height:80px;" href="#/tab/chats/about-code"><img src="img/list1.png" style="height:60px;"/><h2 style="text-align:center;font-size:20px;line-height:60px;">技术</h2></a>
+      <a class="item item-thumbnail-left" style="min-height:80px;" href="#/tab/chats/brain-hole"><img src="img/list2.png" style="height:60px;"/><h2 style="text-align:center;font-size:20px;line-height:60px;">生活</h2></a>
+      <a class="item item-thumbnail-left" style="min-height:80px;" href="#/tab/chats/niu-b"><img src="img/list3.jpg" style="height:60px;"/><h2 style="text-align:center;font-size:20px;line-height:60px;">兴趣</h2></a>
+    </div>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar nomal-list" ng-repeat="post in data" type="item-text-wrap" href="#/tab/chat/{{post._id}}">
+        <img ng-src="http://gravatar.duoshuo.com/avatar/cf664a903aad472c71afb8661fd15448">
+        <h2>{{post.title}}</h2>
+        <div class="nomal-list-bottom">
+          <div class="nomal-list-bottom-left">
+            <i class="ion-ios-heart-outline"></i>
+            <span>0&nbsp;&nbsp;&nbsp;</span>
+            <i class="ion-ios-chatbubble-outline"></i>
+            <span>{{post.comments.length}}</span>
+          </div>
+          <div class="nomal-list-bottom-right">
+            {{post.name}}
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
